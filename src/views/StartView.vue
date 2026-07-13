@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import AppHeader from '@/components/AppHeader.vue'
+import CtaButton from '@/components/CtaButton.vue'
 import runnerImage from '@/assets/Background Image Start Screen.png'
 </script>
 
@@ -11,7 +12,7 @@ import runnerImage from '@/assets/Background Image Start Screen.png'
       <div class="start__copy">
         <h1 class="start__heading">Take the quiz<br />and try your first pair!</h1>
 
-        <button class="start__cta" type="button">Try On Trial</button>
+        <CtaButton class="start__cta">Try On Trial</CtaButton>
 
         <p class="start__note">30 Days risk free</p>
       </div>
@@ -55,46 +56,22 @@ import runnerImage from '@/assets/Background Image Start Screen.png'
 .start__copy {
   position: relative;
   z-index: 2;
-  max-width: 640px;
+  max-width: 50%;
   padding: 19% 48px 0;
 }
 
 .start__heading {
-  font-family: $font-serif;
-  font-weight: 400;
   font-size: clamp(28px, 7vw, 38px);
   line-height: 1.15;
-  color: $color-text;
   margin-bottom: 28px;
 }
 
 .start__cta {
-  position: relative;
-  display: inline-block;
-  background: $color-black;
-  color: $color-white;
-  font-family: $font-sans;
-  font-size: 24px;
-  letter-spacing: 0.02em;
-  padding: 18px 40px;
   margin-bottom: 24px;
-  box-shadow: 0 6px 0 0 #55534e;
-  transition: transform 0.15s ease;
-
-  &:hover {
-    transform: translateY(-1px);
-  }
-
-  &:active {
-    transform: translateY(1px);
-    box-shadow: 0 3px 0 0 #55534e;
-  }
 }
 
 .start__note {
-  font-family: $font-sans;
   font-size: 14px;
-  color: $color-text-muted;
 }
 
 .start__visual {
