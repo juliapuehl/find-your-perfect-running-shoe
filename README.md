@@ -1,73 +1,35 @@
-# on-cinderella-quiz
+## Frontend Engineer Use Case
 
-This template should help get you started developing with Vue 3 in Vite.
+### Your task
+Build a small quiz for runners to find their perfect shoe.
 
-## Recommended IDE Setup
+### General notes
+- We have provided you with a JSON file (`data.json`) with all the data concerning questions, answers and shoes.
+- Depending on how a question is answered, users can be taken to different follow-up questions. You will find the `nextQuestion` in the JSON file.
+- A blank `nextQuestion` means the quiz is finished and the results are presented (the best fitting shoes).
+- Also depending on the answer, we update the ranking of shoes. How much each shoe gains per answer is listed in the JSON file (`ratingIncrease`).
+- Skip the main navigation, concentrate on the quiz.
+- You don’t have to use the original fonts. Just go with some similar Google fonts.
+- Assets can be found in the assets directory.
+- We prefer to see a solution where you write your own scss code instead of using a css framework like Bootstrap or Tailwind.
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+### Technical implementation
+- If you already have some knowledge of Vue.js, create an app with vue-cli and show off your skills. If you are not familiar with Vue.js yet, vanilla JS or another frontend framework like React is fine too. Feel free to use a boilerplate to get started.
+- Please follow the design of the layouts below.
+- Add animations and transitions at your discretion.
+- If you have any questions, do not hesitate to get in touch!
 
-## Recommended Browser Setup
+### Layouts
+#### Start Screen
+![alt text](./layouts/1_start_screen.png "Start Screen")
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+#### Question Screen
+![alt text](./layouts/2_question_screen.png "Question Screen")
 
-## Type Support for `.vue` Imports in TS
+#### Loading Screen
+![alt text](./layouts/3_loading_screen.png "Loading Screen")
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+#### Results Screen
+![alt text](./layouts/4_results_screen.png "Results Screen")
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Run End-to-End Tests with [Playwright](https://playwright.dev)
-
-```sh
-# Install browsers for the first run
-npx playwright install
-
-# When testing on CI, must build the project first
-npm run build
-
-# Runs the end-to-end tests
-npm run test:e2e
-# Runs the tests only on Chromium
-npm run test:e2e -- --project=chromium
-# Runs the tests of a specific file
-npm run test:e2e -- tests/example.spec.ts
-# Runs the tests in debug mode
-npm run test:e2e -- --debug
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+Have fun and good luck!
