@@ -1,0 +1,27 @@
+// Colors
+$color-white: #ffffff;
+$color-bg-page: #e9e8e4;
+$color-bg-light: #f4f3f0;
+$color-bg-dark: #2f2e2c;
+$color-black: #141310;
+$color-text: #201f1c;
+$color-text-inverse: #f4f3f0;
+$color-text-muted: #8b8a85;
+$color-border: #e4e2dd;
+
+// Typography
+$font-serif: 'Courier', 'Iowan Old Style', 'Georgia', serif;
+$font-sans:
+  'Inter',
+  -apple-system,
+  BlinkMacSystemFont,
+  'Segoe UI',
+  sans-serif;
+
+// Layout
+$header-height: 102px;
+$shell-max-width: 560px;
+$shell-max-width-desktop: 800px;
+
+// Breakpoints
+$bp-desktop: 1024px;
