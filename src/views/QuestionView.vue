@@ -1,12 +1,18 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 import AppHeader from '@/components/AppHeader.vue'
 import AnswerOption from '@/components/AnswerOption.vue'
 import { useQuizStore, type Answer } from '@/stores/quiz'
 
+const router = useRouter()
 const quiz = useQuizStore()
 
 function selectAnswer(answer: Answer) {
   quiz.answer(answer)
+
+  if (!quiz.currentQuestion) {
+    router.push({ name: 'loading' })
+  }
 }
 </script>
 
@@ -14,10 +20,9 @@ function selectAnswer(answer: Answer) {
   <div class="question">
     <AppHeader />
 
-    <main class="question__content">
+    <main v-if="quiz.currentQuestion" class="question__content">
       <p class="question__eyebrow">Try On Quiz<br />30 Days risk free</p>
-
-      <template v-if="quiz.currentQuestion">
+      <div class="question__wrapper">
         <h1 class="question__copy">{{ quiz.currentQuestion.copy }}</h1>
 
         <div class="question__answers">
@@ -28,9 +33,7 @@ function selectAnswer(answer: Answer) {
             @click="selectAnswer(answer)"
           />
         </div>
-      </template>
-
-      <h1 v-else class="question__copy">Thanks! Finding your shoes&hellip;</h1>
+      </div>
     </main>
   </div>
 </template>
@@ -64,12 +67,18 @@ function selectAnswer(answer: Answer) {
   margin-bottom: 22%;
 }
 
+.question__wrapper {
+  height: 300px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .question__copy {
   font-size: clamp(26px, 6vw, 34px);
   line-height: 1.25;
   color: $color-text-inverse;
-  max-width: 420px;
-  margin-bottom: 15%;
 }
 
 .question__answers {
@@ -77,6 +86,5 @@ function selectAnswer(answer: Answer) {
   grid-template-columns: 1fr 1fr;
   gap: 12px;
   width: 100%;
-  max-width: 420px;
 }
 </style>
