@@ -48,12 +48,16 @@ function restartQuiz() {
 .results {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
   background: $color-white;
 }
 
 .results__content {
   flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   padding: 32px 24px 40px;
 }
 
@@ -70,7 +74,7 @@ function restartQuiz() {
 
 .results__subheading {
   font-size: 22px;
-  margin: 40px 0 20px;
+  margin: 120px 0 20px;
 }
 
 .results__card {
@@ -84,8 +88,8 @@ function restartQuiz() {
 }
 
 .results__restart {
-  display: flex;
-  justify-content: center;
-  margin-top: 16px;
+  display: block;
+  width: fit-content;
+  margin: 92px auto 48px;
 }
 </style>
