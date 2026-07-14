@@ -2,6 +2,7 @@
 import { useRouter } from 'vue-router'
 import AppHeader from '@/components/AppHeader.vue'
 import AnswerOption from '@/components/AnswerOption.vue'
+import BackButton from '@/components/BackButton.vue'
 import { useQuizStore, type Answer } from '@/stores/quiz'
 
 const router = useRouter()
@@ -21,6 +22,8 @@ function selectAnswer(answer: Answer) {
     <AppHeader />
 
     <main v-if="quiz.currentQuestion" class="question__content">
+      <BackButton v-if="quiz.canGoBack" class="question__back" @click="quiz.goToPreviousQuestion" />
+
       <p class="question__eyebrow">Try On Quiz<br />30 Days risk free</p>
       <div class="question__wrapper">
         <h1 class="question__copy">{{ quiz.currentQuestion.copy }}</h1>
@@ -49,12 +52,19 @@ function selectAnswer(answer: Answer) {
 }
 
 .question__content {
+  position: relative;
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   padding: 15% 24px 0;
+}
+
+.question__back {
+  position: absolute;
+  left: 24px;
+  top: 24px;
 }
 
 .question__eyebrow {
@@ -64,15 +74,23 @@ function selectAnswer(answer: Answer) {
   line-height: 1.8;
   text-transform: uppercase;
   color: rgba($color-text-inverse, 0.6);
-  margin-bottom: 22%;
+  margin: 12% 0 22% 0;
+
+  @media (min-width: $bp-desktop) {
+    margin: 0 0 22% 0;
+  }
 }
 
 .question__wrapper {
   height: 300px;
-  max-width: 500px;
+  max-width: 320px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (min-width: $bp-desktop) {
+    max-width: 500px;
+  }
 }
 
 .question__copy {

@@ -21,6 +21,11 @@ interface Shoe {
   rating: number
 }
 
+interface HistoryEntry {
+  questionId: number
+  answer: Answer
+}
+
 const questions = questionsData.questions as Question[]
 const shoes = shoesData.shoes as Shoe[]
 
@@ -31,23 +36,41 @@ function initialRatings(): Record<string, number> {
 export const useQuizStore = defineStore('quiz', () => {
   const currentQuestionId = ref<number | null>(questions[0]?.id ?? null)
   const ratings = ref<Record<string, number>>(initialRatings())
+  const history = ref<HistoryEntry[]>([])
 
   const currentQuestion = computed(() =>
     questions.find((question) => question.id === currentQuestionId.value),
   )
 
+  const canGoBack = computed(() => history.value.length > 0)
+
   function answer(selected: Answer) {
+    if (currentQuestionId.value === null) return
+
     for (const [shoeId, points] of Object.entries(selected.ratingIncrease)) {
       ratings.value[shoeId] = (ratings.value[shoeId] ?? 0) + points
     }
 
+    history.value.push({ questionId: currentQuestionId.value, answer: selected })
     currentQuestionId.value = selected.nextQuestion === '' ? null : selected.nextQuestion
+  }
+
+  function goToPreviousQuestion() {
+    const previous = history.value.pop()
+    if (!previous) return
+
+    for (const [shoeId, points] of Object.entries(previous.answer.ratingIncrease)) {
+      ratings.value[shoeId] = (ratings.value[shoeId] ?? 0) - points
+    }
+
+    currentQuestionId.value = previous.questionId
   }
 
   function reset() {
     currentQuestionId.value = questions[0]?.id ?? null
     ratings.value = initialRatings()
+    history.value = []
   }
 
-  return { currentQuestion, ratings, answer, reset }
+  return { currentQuestion, ratings, canGoBack, answer, goToPreviousQuestion, reset }
 })
