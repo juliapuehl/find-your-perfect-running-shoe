@@ -1,7 +1,14 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 import AppHeader from '@/components/AppHeader.vue'
 import CtaButton from '@/components/CtaButton.vue'
 import runnerImage from '@/assets/Background Image Start Screen.png'
+
+const router = useRouter()
+
+function startQuiz() {
+  router.push({ name: 'quiz' })
+}
 </script>
 
 <template>
@@ -12,7 +19,7 @@ import runnerImage from '@/assets/Background Image Start Screen.png'
       <div class="start__copy">
         <h1 class="start__heading">Take the quiz<br />and try your first pair!</h1>
 
-        <CtaButton class="start__cta">Try On Trial</CtaButton>
+        <CtaButton class="start__cta" @click="startQuiz">Try On Trial</CtaButton>
 
         <p class="start__note">30 Days risk free</p>
       </div>
