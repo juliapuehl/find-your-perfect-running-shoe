@@ -1,18 +1,18 @@
-const imageModules = import.meta.glob<{ default: string }>('../assets/*.png', { eager: true })
+const imageModules = import.meta.glob<{ default: string }>('../assets/*.webp', { eager: true })
 
 const imagesByFilename = Object.fromEntries(
   Object.entries(imageModules).map(([path, mod]) => [path.split('/').pop(), mod.default]),
 )
 
 const shoeImageFilenames: Record<string, string> = {
-  cloud: 'Cloud.png',
-  cloudx: 'Cloud X.png',
-  cloudflow: 'Cloudflow.png',
-  cloudventure: 'Cloudventure.png',
-  cloudsurfer: 'Cloudsurfer.png',
-  cloudventure_waterproof: 'Cloudventure Waterproof.png',
-  cloudventure_peak: 'Cloudventure Peak.png',
-  cloudflyer: 'Cloudflyer.png',
+  cloud: 'Cloud.webp',
+  cloudx: 'Cloud X.webp',
+  cloudflow: 'Cloudflow.webp',
+  cloudventure: 'Cloudventure.webp',
+  cloudsurfer: 'Cloudsurfer.webp',
+  cloudventure_waterproof: 'Cloudventure Waterproof.webp',
+  cloudventure_peak: 'Cloudventure Peak.webp',
+  cloudflyer: 'Cloudflyer.webp',
 }
 
 export function getShoeImage(shoeId: string): string {

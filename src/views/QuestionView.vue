@@ -96,7 +96,7 @@ function goBack() {
   flex-direction: column;
   gap: clamp(16px, 4vh, 32px);
 
-  @media (min-width: $bp-desktop) {
+  @media (min-width: $bp-laptop) {
     max-width: 500px;
   }
 }
