@@ -3,42 +3,50 @@
     {
       "id": "cloud",
       "name": "Cloud",
-      "rating": 0
+      "rating": 0,
+      "link": "https://www.on.com/de-ch/products/cloud-6-3wf1006/womens/pearl-white-shoes-3WF10060755"
     },
     {
       "id": "cloudx",
       "name": "Cloud X",
-      "rating": 0
+      "rating": 0,
+      "link": "https://www.on.com/de-ch/products/cloud-x-w-3wg3006/womens/black-black-shoes-3WG30061043"
     },
     {
       "id": "cloudflow",
       "name": "Cloudflow",
-      "rating": 0
+      "rating": 0,
+      "link": "https://www.on.com/de-ch/products/cloudflow-5-m-3mf1011/mens/flurry-wash-shoes-3MF10114946"
     },
     {
       "id": "cloudventure",
       "name": "Cloudventure",
-      "rating": 0
+      "rating": 0,
+      "link": "https://www.onshoeschweiz.com/product/on-cloudventure-wasserdichte-laufschuhe-damen-weiss/"
     },
     {
       "id": "cloudsurfer",
       "name": "Cloudsurfer",
-      "rating": 0
+      "rating": 0,
+      "link": "https://www.on.com/de-ch/products/cloudsurfer-2-3wf1010/womens/camellia-ivory-shoes-3WF10105085"
     },
     {
       "id": "cloudventure_waterproof",
       "name": "Cloudventure Waterproof",
-      "rating": 0
+      "rating": 0,
+      "link": "https://www.onshoeschweiz.com/product/on-cloudventure-wasserdichte-laufschuhe-damen-weiss/"
     },
     {
       "id": "cloudventure_peak",
       "name": "Cloudventure Peak",
-      "rating": 0
+      "rating": 0,
+      "link": "https://www.onshoeschweiz.com/product/on-cloudventure-peak-3-laufschuhe-damen-weiss/"
     },
     {
       "id": "cloudflyer",
       "name": "Cloudflyer",
-      "rating": 0
+      "rating": 0,
+      "link": "https://www.onshoeschweiz.com/product/on-cloudflyer-4-laufschuhe-damen-beige/"
     }
   ]
 }

@@ -12,7 +12,6 @@
 .app-shell {
   max-width: $shell-max-width;
   margin: 0 auto;
-  min-height: 100vh;
 
   @media (min-width: $bp-desktop) {
     max-width: $shell-max-width-desktop;

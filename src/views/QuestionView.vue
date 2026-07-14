@@ -93,7 +93,6 @@ function selectAnswer(answer: Answer) {
 }
 
 .question__copy {
-  font-size: clamp(26px, 6vw, 34px);
   line-height: 1.25;
   color: $color-text-inverse;
 }

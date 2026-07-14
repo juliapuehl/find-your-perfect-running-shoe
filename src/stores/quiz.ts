@@ -19,6 +19,7 @@ export interface Shoe {
   id: string
   name: string
   rating: number
+  link: string
 }
 
 interface HistoryEntry {

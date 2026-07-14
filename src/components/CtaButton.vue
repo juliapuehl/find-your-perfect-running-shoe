@@ -17,7 +17,7 @@ withDefaults(defineProps<{ type?: 'button' | 'submit' }>(), { type: 'button' })
   background: $color-black;
   color: $color-white;
   font-family: $font-serif;
-  font-size: 24px;
+  font-size: 20px;
   letter-spacing: 0.02em;
   padding: 18px 40px;
   box-shadow: 0 6px 0 0 $color-shadow-ledge;

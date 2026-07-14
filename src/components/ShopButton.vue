@@ -1,11 +1,11 @@
 <script setup lang="ts">
-withDefaults(defineProps<{ type?: 'button' | 'submit' }>(), { type: 'button' })
+defineProps<{ href: string }>()
 </script>
 
 <template>
-  <button class="shop-button" :type="type">
+  <a class="shop-button" :href="href" target="_blank" rel="noopener noreferrer">
     <slot>Shop now</slot>
-  </button>
+  </a>
 </template>
 
 <style lang="scss" scoped>

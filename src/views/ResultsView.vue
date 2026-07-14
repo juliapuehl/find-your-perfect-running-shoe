@@ -34,7 +34,7 @@ function restartQuiz() {
         <h2 v-if="index === 1" class="results__subheading">Similar profiles</h2>
 
         <ShoeCard class="results__card" :name="shoe.name" :image-src="getShoeImage(shoe.id)" />
-        <ShopButton class="results__shop" />
+        <ShopButton class="results__shop" :href="shoe.link" />
       </template>
 
       <RestartButton class="results__restart" @click="restartQuiz" />

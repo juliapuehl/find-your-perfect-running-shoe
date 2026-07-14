@@ -64,10 +64,15 @@ function startQuiz() {
   z-index: 2;
   max-width: 50%;
   padding: 19% 48px 0;
+  @media (min-width: $bp-laptop) {
+    width: 62%;
+  }
+  @media (min-width: $bp-desktop) {
+    width: 52%;
+  }
 }
 
 .start__heading {
-  font-size: clamp(28px, 7vw, 38px);
   line-height: 1.15;
   margin-bottom: 28px;
 }
@@ -86,12 +91,11 @@ function startQuiz() {
   bottom: 0;
   width: 68%;
   aspect-ratio: 0.52 / 1;
-
-  @media (min-width: $bp-desktop) {
-    width: 52%;
-  }
   @media (min-width: $bp-laptop) {
     width: 32%;
+  }
+  @media (min-width: $bp-desktop) {
+    width: 52%;
   }
 }
 
