@@ -13,7 +13,7 @@
   max-width: $shell-max-width;
   margin: 0 auto;
 
-  @media (min-width: $bp-desktop) {
+  @media (min-width: $bp-laptop) {
     max-width: $shell-max-width-desktop;
   }
 }

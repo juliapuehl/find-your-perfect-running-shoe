@@ -62,7 +62,7 @@ function startQuiz() {
 .start__copy {
   position: relative;
   z-index: 2;
-  max-width: 50%;
+  max-width: 80%;
   padding: 19% 48px 0;
   @media (min-width: $bp-laptop) {
     width: 62%;

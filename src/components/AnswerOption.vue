@@ -15,7 +15,7 @@ defineProps<{ label: string }>()
   border: 1px solid rgba($color-text-inverse, 0.35);
   color: $color-text-inverse;
   font-size: 17px;
-  padding: 26px 16px;
+  padding: clamp(14px, 4vh, 26px) 16px;
   text-align: center;
   transition:
     border-color 0.15s ease,

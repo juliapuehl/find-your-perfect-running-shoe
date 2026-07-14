@@ -47,23 +47,28 @@ function selectAnswer(answer: Answer) {
 .question {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
   background: $color-bg-dark;
 }
 
 .question__content {
   position: relative;
   flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 48px 24px;
+  padding: clamp(16px, 4vh, 48px) 24px;
+  gap: clamp(16px, 5vh, 40px);
 }
 
 .question__back {
   position: absolute;
   left: 24px;
+  top: clamp(12px, 3vh, 24px);
 }
 
 .question__eyebrow {
@@ -73,19 +78,13 @@ function selectAnswer(answer: Answer) {
   line-height: 1.8;
   text-transform: uppercase;
   color: rgba($color-text-inverse, 0.6);
-  margin: 12% 0 22% 0;
-
-  @media (min-width: $bp-desktop) {
-    margin: 0 0 22% 0;
-  }
 }
 
 .question__wrapper {
-  height: 300px;
   max-width: 320px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: clamp(16px, 4vh, 32px);
 
   @media (min-width: $bp-desktop) {
     max-width: 500px;
@@ -93,6 +92,10 @@ function selectAnswer(answer: Answer) {
 }
 
 .question__copy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 5em;
   line-height: 1.25;
   color: $color-text-inverse;
 }
