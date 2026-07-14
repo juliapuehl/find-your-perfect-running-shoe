@@ -142,12 +142,14 @@ function startQuiz() {
   position: relative;
   z-index: 2;
   max-width: 100%;
-  padding: 19% 48px 0;
+  padding: 48px 16px 0;
   @media (min-width: $bp-laptop) {
     width: 62%;
+    padding: 19% 48px 0;
   }
   @media (min-width: $bp-desktop) {
     width: 52%;
+    padding: 19% 48px 0;
   }
 }
 
@@ -168,7 +170,7 @@ function startQuiz() {
   position: absolute;
   right: 2%;
   bottom: 0;
-  width: 58%;
+  width: 50%;
   aspect-ratio: 0.52 / 1;
   @media (min-width: $bp-laptop) {
     width: 32%;
