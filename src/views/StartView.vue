@@ -1,13 +1,40 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import AppHeader from '@/components/AppHeader.vue'
 import CtaButton from '@/components/CtaButton.vue'
 import runnerImage from '@/assets/Background Image Start Screen.png'
 
+interface Sparkle {
+  left: number
+  bottom: number
+  size: number
+  delay: number
+}
+
 const router = useRouter()
+const isTransitioning = ref(false)
+const sparkles = ref<Sparkle[]>([])
+
+function createSparkles(): Sparkle[] {
+  return Array.from({ length: 16 }, () => {
+    const bottom = Math.random() * 100
+    return {
+      left: Math.random() * 100,
+      bottom,
+      size: 3 + Math.random() * 4,
+      delay: (bottom / 100) * 0.5 + Math.random() * 0.15,
+    }
+  })
+}
 
 function startQuiz() {
-  router.push({ name: 'quiz' })
+  if (isTransitioning.value) return
+  isTransitioning.value = true
+  sparkles.value = createSparkles()
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  window.setTimeout(() => router.push({ name: 'quiz' }), prefersReducedMotion ? 0 : 700)
 }
 </script>
 
@@ -15,7 +42,7 @@ function startQuiz() {
   <div class="start">
     <AppHeader />
 
-    <main class="start__content">
+    <main class="start__content" :class="{ 'start__content--transitioning': isTransitioning }">
       <div class="start__copy">
         <h1 class="start__heading">Take the quiz<br />and try your first pair!</h1>
 
@@ -26,6 +53,21 @@ function startQuiz() {
 
       <div class="start__visual">
         <img class="start__runner" :src="runnerImage" alt="Runner in On apparel mid-stride" />
+      </div>
+
+      <div v-if="isTransitioning" class="start__sparkles" aria-hidden="true">
+        <span
+          v-for="(sparkle, index) in sparkles"
+          :key="index"
+          class="start__sparkle"
+          :style="{
+            left: sparkle.left + '%',
+            bottom: sparkle.bottom + '%',
+            width: sparkle.size + 'px',
+            height: sparkle.size + 'px',
+            animationDelay: sparkle.delay + 's',
+          }"
+        />
       </div>
     </main>
   </div>
@@ -56,6 +98,43 @@ function startQuiz() {
     background: linear-gradient(to bottom, rgba($color-bg-light, 0), $color-bg-light 85%);
     z-index: 3;
     pointer-events: none;
+    transition: height 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  &--transitioning::after {
+    height: 100%;
+  }
+}
+
+.start__sparkles {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.start__sparkle {
+  position: absolute;
+  border-radius: 50%;
+  background: $color-white;
+  box-shadow: 0 0 6px 2px rgba($color-white, 0.85);
+  opacity: 0;
+  transform: scale(0);
+  animation: start-sparkle-twinkle 1.5s ease-in-out forwards;
+}
+
+@keyframes start-sparkle-twinkle {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  45% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.3);
   }
 }
 

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import AppHeader from '@/components/AppHeader.vue'
 import AnswerOption from '@/components/AnswerOption.vue'
@@ -7,13 +8,20 @@ import { useQuizStore, type Answer } from '@/stores/quiz'
 
 const router = useRouter()
 const quiz = useQuizStore()
+const transitionName = ref('question-swap')
 
 function selectAnswer(answer: Answer) {
+  transitionName.value = 'question-swap'
   quiz.answer(answer)
 
   if (!quiz.currentQuestion) {
     router.push({ name: 'loading' })
   }
+}
+
+function goBack() {
+  transitionName.value = 'question-instant'
+  quiz.goToPreviousQuestion()
 }
 </script>
 
@@ -22,21 +30,23 @@ function selectAnswer(answer: Answer) {
     <AppHeader />
 
     <main v-if="quiz.currentQuestion" class="question__content">
-      <BackButton v-if="quiz.canGoBack" class="question__back" @click="quiz.goToPreviousQuestion" />
+      <BackButton v-if="quiz.canGoBack" class="question__back" @click="goBack" />
 
       <p class="question__eyebrow">Try On Quiz<br />30 Days risk free</p>
-      <div class="question__wrapper">
-        <h1 class="question__copy">{{ quiz.currentQuestion.copy }}</h1>
+      <Transition :name="transitionName" mode="out-in">
+        <div :key="quiz.currentQuestion.id" class="question__wrapper">
+          <h1 class="question__copy">{{ quiz.currentQuestion.copy }}</h1>
 
-        <div class="question__answers">
-          <AnswerOption
-            v-for="(answer, index) in quiz.currentQuestion.answers"
-            :key="index"
-            :label="answer.copy"
-            @click="selectAnswer(answer)"
-          />
+          <div class="question__answers">
+            <AnswerOption
+              v-for="(answer, index) in quiz.currentQuestion.answers"
+              :key="index"
+              :label="answer.copy"
+              @click="selectAnswer(answer)"
+            />
+          </div>
         </div>
-      </div>
+      </Transition>
     </main>
   </div>
 </template>
@@ -105,5 +115,27 @@ function selectAnswer(answer: Answer) {
   grid-template-columns: 1fr 1fr;
   gap: 12px;
   width: 100%;
+}
+
+.question-swap-enter-active,
+.question-swap-leave-active {
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease;
+}
+
+.question-swap-enter-from {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.question-swap-leave-to {
+  opacity: 0;
+  transform: translateY(-12px);
+}
+
+.question-instant-enter-active,
+.question-instant-leave-active {
+  transition: none;
 }
 </style>

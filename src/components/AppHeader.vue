@@ -9,7 +9,9 @@ import onLogo from '@/assets/on-logo.png'
       <span></span>
       <span></span>
     </button>
-    <img class="app-header__logo" :src="onLogo" alt="On" />
+    <RouterLink :to="{ name: 'start' }" class="app-header__logo-link">
+      <img class="app-header__logo" :src="onLogo" alt="On" />
+    </RouterLink>
   </header>
 </template>
 
@@ -25,6 +27,10 @@ import onLogo from '@/assets/on-logo.png'
   flex-shrink: 0;
   background: $color-white;
   border-bottom: 1px solid $color-border;
+}
+
+.app-header__logo-link {
+  display: inline-flex;
 }
 
 .app-header__logo {

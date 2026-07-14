@@ -50,8 +50,8 @@ onUnmounted(() => {
 }
 
 .loading__icon {
-  width: 64px;
-  height: 64px;
+  width: 128px;
+  height: 128px;
   margin-bottom: 20px;
   opacity: 0.7;
 }

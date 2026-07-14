@@ -34,10 +34,16 @@ function initialRatings(): Record<string, number> {
   return Object.fromEntries(shoes.map((shoe) => [shoe.id, 0]))
 }
 
+type Gender = 'male' | 'female'
+
+const GENDER_PATH_SEGMENT: Record<Gender, string> = { male: 'mens', female: 'womens' }
+const GENDER_QUESTION_ID = 0
+
 export const useQuizStore = defineStore('quiz', () => {
   const currentQuestionId = ref<number | null>(questions[0]?.id ?? null)
   const ratings = ref<Record<string, number>>(initialRatings())
   const history = ref<HistoryEntry[]>([])
+  const gender = ref<Gender | null>(null)
 
   const currentQuestion = computed(() =>
     questions.find((question) => question.id === currentQuestionId.value),
@@ -47,12 +53,25 @@ export const useQuizStore = defineStore('quiz', () => {
 
   const rankedShoes = computed<Shoe[]>(() =>
     [...shoes]
-      .map((shoe) => ({ ...shoe, rating: ratings.value[shoe.id] ?? 0 }))
+      .map((shoe) => ({
+        ...shoe,
+        rating: ratings.value[shoe.id] ?? 0,
+        link: applyGenderToLink(shoe.link),
+      }))
       .sort((a, b) => b.rating - a.rating),
   )
 
+  function applyGenderToLink(link: string): string {
+    if (!gender.value) return link
+    return link.replace(/\/(mens|womens)\//, `/${GENDER_PATH_SEGMENT[gender.value]}/`)
+  }
+
   function answer(selected: Answer) {
     if (currentQuestionId.value === null) return
+
+    if (currentQuestionId.value === GENDER_QUESTION_ID) {
+      gender.value = selected.copy.trim().toLowerCase() === 'female' ? 'female' : 'male'
+    }
 
     for (const [shoeId, points] of Object.entries(selected.ratingIncrease)) {
       ratings.value[shoeId] = (ratings.value[shoeId] ?? 0) + points
@@ -70,6 +89,10 @@ export const useQuizStore = defineStore('quiz', () => {
       ratings.value[shoeId] = (ratings.value[shoeId] ?? 0) - points
     }
 
+    if (previous.questionId === GENDER_QUESTION_ID) {
+      gender.value = null
+    }
+
     currentQuestionId.value = previous.questionId
   }
 
@@ -77,7 +100,17 @@ export const useQuizStore = defineStore('quiz', () => {
     currentQuestionId.value = questions[0]?.id ?? null
     ratings.value = initialRatings()
     history.value = []
+    gender.value = null
   }
 
-  return { currentQuestion, ratings, canGoBack, rankedShoes, answer, goToPreviousQuestion, reset }
+  return {
+    currentQuestion,
+    ratings,
+    gender,
+    canGoBack,
+    rankedShoes,
+    answer,
+    goToPreviousQuestion,
+    reset,
+  }
 })

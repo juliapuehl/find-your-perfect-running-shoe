@@ -26,8 +26,9 @@ function restartQuiz() {
     <main v-if="topMatches[0]" class="results__content">
       <h1 class="results__heading">Congratulations!</h1>
       <p class="results__intro">
-        Based on your selection we&rsquo;ve decided on the {{ topMatches[0].name }}! Enjoy the 30
-        day trial.
+        Based on your selection we&rsquo;ve decided on the <strong>{{ topMatches[0].name }}</strong
+        >! <br />
+        Enjoy the 30 day trial.
       </p>
 
       <template v-for="(shoe, index) in topMatches" :key="shoe.id">
@@ -67,7 +68,7 @@ function restartQuiz() {
 }
 
 .results__intro {
-  font-size: 14px;
+  font-size: 18px;
   line-height: 1.5;
   margin-bottom: 24px;
 }

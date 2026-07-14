@@ -24,7 +24,7 @@ withDefaults(defineProps<{ type?: 'button' | 'submit' }>(), { type: 'button' })
   transition: transform 0.15s ease;
 
   &:hover {
-    transform: translateY(-1px);
+    transform: translateY(-2px);
   }
 
   &:active {
