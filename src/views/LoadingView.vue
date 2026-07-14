@@ -1,6 +1,22 @@
 <script setup lang="ts">
+import { onMounted, onUnmounted } from 'vue'
+import { useRouter } from 'vue-router'
 import AppHeader from '@/components/AppHeader.vue'
 import loaderIcon from '@/assets/loader.gif'
+
+const router = useRouter()
+
+let redirectTimer: ReturnType<typeof setTimeout>
+
+onMounted(() => {
+  redirectTimer = setTimeout(() => {
+    router.push({ name: 'results' })
+  }, 1800)
+})
+
+onUnmounted(() => {
+  clearTimeout(redirectTimer)
+})
 </script>
 
 <template>

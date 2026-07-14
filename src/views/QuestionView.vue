@@ -58,13 +58,12 @@ function selectAnswer(answer: Answer) {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 15% 24px 0;
+  padding: 48px 24px;
 }
 
 .question__back {
   position: absolute;
   left: 24px;
-  top: 24px;
 }
 
 .question__eyebrow {

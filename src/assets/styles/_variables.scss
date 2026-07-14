@@ -9,6 +9,7 @@ $color-text-inverse: #f4f3f0;
 $color-text-muted: #8b8a85;
 $color-border: #e4e2dd;
 $color-shadow-ledge: #55534e;
+$color-teal: #3f5b63;
 
 // Typography
 $font-serif: 'Courier', 'Iowan Old Style', 'Georgia', serif;
@@ -25,4 +26,5 @@ $shell-max-width: 560px;
 $shell-max-width-desktop: 800px;
 
 // Breakpoints
-$bp-desktop: 1024px;
+$bp-desktop: 1440px;
+$bp-laptop: 1024px;

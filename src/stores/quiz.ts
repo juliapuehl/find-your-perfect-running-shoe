@@ -15,7 +15,7 @@ interface Question {
   answers: Answer[]
 }
 
-interface Shoe {
+export interface Shoe {
   id: string
   name: string
   rating: number
@@ -43,6 +43,12 @@ export const useQuizStore = defineStore('quiz', () => {
   )
 
   const canGoBack = computed(() => history.value.length > 0)
+
+  const rankedShoes = computed<Shoe[]>(() =>
+    [...shoes]
+      .map((shoe) => ({ ...shoe, rating: ratings.value[shoe.id] ?? 0 }))
+      .sort((a, b) => b.rating - a.rating),
+  )
 
   function answer(selected: Answer) {
     if (currentQuestionId.value === null) return
@@ -72,5 +78,5 @@ export const useQuizStore = defineStore('quiz', () => {
     history.value = []
   }
 
-  return { currentQuestion, ratings, canGoBack, answer, goToPreviousQuestion, reset }
+  return { currentQuestion, ratings, canGoBack, rankedShoes, answer, goToPreviousQuestion, reset }
 })

@@ -44,7 +44,6 @@ function startQuiz() {
 .start__content {
   position: relative;
   flex: 1;
-  min-height: 620px;
   overflow: hidden;
 
   &::after {
@@ -90,6 +89,9 @@ function startQuiz() {
 
   @media (min-width: $bp-desktop) {
     width: 52%;
+  }
+  @media (min-width: $bp-laptop) {
+    width: 32%;
   }
 }
 
