@@ -59,7 +59,7 @@ onUnmounted(() => {
 .loading__copy {
   font-family: $font-serif;
   font-size: 19px;
-  color: rgba($color-text-inverse, 0.6);
+  color: $color-text-inverse-muted;
   max-width: 320px;
 }
 </style>

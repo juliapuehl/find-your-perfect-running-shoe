@@ -87,7 +87,7 @@ function goBack() {
   letter-spacing: 0.15em;
   line-height: 1.8;
   text-transform: uppercase;
-  color: rgba($color-text-inverse, 0.6);
+  color: $color-text-inverse-muted;
 }
 
 .question__wrapper {
@@ -126,12 +126,10 @@ function goBack() {
 
 .question-swap-enter-from {
   opacity: 0;
-  transform: translateY(12px);
 }
 
 .question-swap-leave-to {
   opacity: 0;
-  transform: translateY(-12px);
 }
 
 .question-instant-enter-active,

@@ -27,6 +27,11 @@ defineProps<{ name: string; imageSrc: string }>()
 <style lang="scss" scoped>
 @use '@/assets/styles/variables' as *;
 
+$swatch-cream: #ded9c4;
+$swatch-orange: #c1613a;
+$swatch-blue: #2f4a5c;
+$swatch-black: $color-black;
+
 .shoe-card {
   background: $color-bg-light;
   text-align: left;
@@ -71,19 +76,19 @@ defineProps<{ name: string; imageSrc: string }>()
   border: 1px solid $color-border;
 
   &--cream {
-    background: #ded9c4;
+    background: $swatch-cream;
   }
 
   &--orange {
-    background: #c1613a;
+    background: $swatch-orange;
   }
 
   &--blue {
-    background: #2f4a5c;
+    background: $swatch-blue;
   }
 
   &--black {
-    background: $color-black;
+    background: $swatch-black;
   }
 }
 </style>
