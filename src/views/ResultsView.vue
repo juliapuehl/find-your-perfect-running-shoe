@@ -5,6 +5,7 @@ import AppHeader from '@/components/AppHeader.vue'
 import ShoeCard from '@/components/ShoeCard.vue'
 import ShopButton from '@/components/ShopButton.vue'
 import RestartButton from '@/components/RestartButton.vue'
+import RestartIcon from '@/components/icons/RestartIcon.vue'
 import { useQuizStore } from '@/stores/quiz'
 import { getShoeImage } from '@/utils/shoeImages'
 
@@ -38,7 +39,10 @@ function restartQuiz() {
         <ShopButton class="results__shop" :href="shoe.link" />
       </template>
 
-      <RestartButton class="results__restart" @click="restartQuiz" />
+      <div class="button__wrapper">
+        <RestartButton :icon="RestartIcon" class="results__restart" @click="restartQuiz" />
+        <RestartButton label="Show my Quiz Results" class="results__restart" />
+      </div>
     </main>
   </div>
 </template>
@@ -92,5 +96,11 @@ function restartQuiz() {
   display: block;
   width: fit-content;
   margin: 92px auto 48px;
+}
+
+.button__wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
 }
 </style>

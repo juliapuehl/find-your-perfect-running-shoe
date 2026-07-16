@@ -59,7 +59,9 @@ function goBack() {
   flex-direction: column;
   height: 100dvh;
   overflow: hidden;
-  background: $color-bg-dark;
+  background:
+    linear-gradient(180deg, rgba($color-white, 0.03), rgba($color-black, 0.15)),
+    $color-bg-dark;
 }
 
 .question__content {
