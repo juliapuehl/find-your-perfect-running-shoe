@@ -12,6 +12,8 @@ import { getShoeImage } from '@/utils/shoeImages'
 const router = useRouter()
 const quiz = useQuizStore()
 
+// call the rankedShoes function in quiz.ts and return the first three elements
+// computed makes topMatches be updated automatically
 const topMatches = computed(() => quiz.rankedShoes.slice(0, 3))
 
 function restartQuiz() {

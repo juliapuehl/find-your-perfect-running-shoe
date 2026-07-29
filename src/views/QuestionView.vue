@@ -8,12 +8,15 @@ import { useQuizStore, type Answer } from '@/stores/quiz'
 
 const router = useRouter()
 const quiz = useQuizStore()
+// only for determining which transition animation to use
 const transitionName = ref('question-swap')
 
 function selectAnswer(answer: Answer) {
   transitionName.value = 'question-swap'
+  // calls answer function in quiz.ts (updates the ratings, the answer history and the currentQuestionId)
   quiz.answer(answer)
 
+  // if the currentQuestionId is null, its the end of the quiz and the loading for results screen is shown
   if (!quiz.currentQuestion) {
     router.push({ name: 'loading' })
   }
@@ -60,8 +63,7 @@ function goBack() {
   height: 100dvh;
   overflow: hidden;
   background:
-    linear-gradient(180deg, rgba($color-white, 0.03), rgba($color-black, 0.15)),
-    $color-bg-dark;
+    linear-gradient(180deg, rgba($color-white, 0.03), rgba($color-black, 0.15)), $color-bg-dark;
 }
 
 .question__content {

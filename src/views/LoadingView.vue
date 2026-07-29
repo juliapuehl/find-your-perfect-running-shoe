@@ -10,11 +10,13 @@ let redirectTimer: ReturnType<typeof setTimeout>
 
 onMounted(() => {
   redirectTimer = setTimeout(() => {
+    // brings up the results page after timer has finished
     router.push({ name: 'results' })
   }, 1800)
 })
 
 onUnmounted(() => {
+  // prevents results page from being shown eventhough user has navigated away from loading page
   clearTimeout(redirectTimer)
 })
 </script>
