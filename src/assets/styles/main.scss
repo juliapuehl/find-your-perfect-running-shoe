@@ -1,4 +1,4 @@
-@use './variables' as *;
+@use './variables' as *; // makes variables available without namespace prefix
 
 *,
 *::before,
@@ -16,12 +16,12 @@ body {
   font-family: $font-sans;
   color: $color-text;
   background: $color-bg-page;
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased; //webkit specific property changing how text is usually ant-aliased on macOS
   -moz-osx-font-smoothing: grayscale;
 }
 
 #app {
-  height: 100dvh;
+  height: 100dvh; // 100% dynamic viewport height (tracks actual current visible viewport - vh based on largest possible viewport)
 }
 
 img {

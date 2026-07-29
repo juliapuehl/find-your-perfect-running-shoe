@@ -9,6 +9,7 @@ import router from './router'
 const app = createApp(App)
 
 app.use(createPinia())
+// installs Vue Router into app instance
 app.use(router)
 
 app.mount('#app')
