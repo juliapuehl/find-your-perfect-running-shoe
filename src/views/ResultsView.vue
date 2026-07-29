@@ -40,7 +40,9 @@ function restartQuiz() {
       </template>
 
       <div class="button__wrapper">
-        <RestartButton :icon="RestartIcon" class="results__restart" @click="restartQuiz" />
+        <RestartButton class="results__restart" @click="restartQuiz">
+          <template #icon><RestartIcon class="restart-button__icon" /></template>
+        </RestartButton>
         <RestartButton label="Show my Quiz Results" class="results__restart" />
       </div>
     </main>

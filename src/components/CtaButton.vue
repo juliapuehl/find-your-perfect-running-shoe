@@ -4,6 +4,7 @@ withDefaults(defineProps<{ type?: 'button' | 'submit' }>(), { type: 'button' })
 
 <template>
   <button class="cta-button" :type="type">
+    <!--content-projection mechanism, similar to prop; injects the button label-->
     <slot />
   </button>
 </template>

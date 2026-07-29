@@ -4,6 +4,7 @@ defineProps<{ href: string }>()
 
 <template>
   <a class="shop-button" :href="href" target="_blank" rel="noopener noreferrer">
+    <!--slot with "Shop now" fallback-->
     <slot>Shop now</slot>
   </a>
 </template>

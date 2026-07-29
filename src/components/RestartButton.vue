@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import type { Component } from 'vue'
 import CtaButton from '@/components/CtaButton.vue'
 
-withDefaults(defineProps<{ label?: string; icon?: Component }>(), {
+withDefaults(defineProps<{ label?: string }>(), {
   label: 'Restart Quiz',
 })
 </script>
 
 <template>
   <CtaButton class="restart-button">
-    <component :is="icon" v-if="icon" class="restart-button__icon" />
+    <slot name="icon" />
     {{ label }}
   </CtaButton>
 </template>
@@ -21,7 +20,7 @@ withDefaults(defineProps<{ label?: string; icon?: Component }>(), {
   gap: 10px;
 }
 
-.restart-button__icon {
+:slotted(.restart-button__icon) {
   width: 16px;
   height: 16px;
 }

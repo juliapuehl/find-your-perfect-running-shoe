@@ -9,10 +9,14 @@ const router = useRouter()
 const isTransitioning = ref(false)
 
 function startQuiz() {
+  // guards against double-firing caused by double clicks
   if (isTransitioning.value) return
+  // starts the visual transition
   isTransitioning.value = true
 
+  // OS accessibility preference to remove animation if user prefers reduced motion
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  // brings up the first question of the quiz
   window.setTimeout(() => router.push({ name: 'quiz' }), prefersReducedMotion ? 0 : 700)
 }
 </script>
@@ -25,6 +29,7 @@ function startQuiz() {
       <div class="start__copy">
         <h1 class="start__heading">Take the quiz<br />and try your first pair!</h1>
 
+        <!--button label is slot content-->
         <CtaButton class="start__cta" @click="startQuiz">Try On Trial</CtaButton>
 
         <p class="start__note">30 Days risk free</p>
