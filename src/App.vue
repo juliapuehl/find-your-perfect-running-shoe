@@ -2,6 +2,7 @@
 
 <template>
   <div class="app-shell">
+    <!--placeholder Vue Router swaps content into based on current route-->
     <RouterView />
   </div>
 </template>

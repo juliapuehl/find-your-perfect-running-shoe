@@ -1,5 +1,7 @@
+//imports every .webp file
 const imageModules = import.meta.glob<{ default: string }>('../assets/*.webp', { eager: true })
 
+// reshapes full path into just the filename
 const imagesByFilename = Object.fromEntries(
   Object.entries(imageModules).map(([path, mod]) => [path.split('/').pop(), mod.default]),
 )
@@ -15,6 +17,7 @@ const shoeImageFilenames: Record<string, string> = {
   cloudflyer: 'Cloudflyer.webp',
 }
 
+// shoe id -> filename lookup --> resolved asset URL
 export function getShoeImage(shoeId: string): string {
   const filename = shoeImageFilenames[shoeId]
   return (filename && imagesByFilename[filename]) || ''
